@@ -1,56 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <title>Projects | Alexander Rosen</title>
-</head>
-<body>
-    <header>
-        <h1>Projects</h1>
-        <nav>
-            <a href="index.html">About Me</a>
-            <a href="cv.html">CV</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
 
-    <div class="project-wrapper">
-        <aside class="sidebar">
-            <div class="sidebar-cat">Assistive Robotics</div>
-            <a href="exoskeleton.html">Ankle Exoskeleton</a>
-            <a href="#">Knee Sleeve Sensors</a>
+    <!--Document Information-->
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Projects | Alexander Rosen</title>
+        <script>
+            MathJax= {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                },
+                svg: {
+                    fontCache: 'global'
+                }
+            };
+        </script>
+        <script type="text/javascript" id="MathJax-script" 
+        async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    </head>
+
+
+    <body>
+        <!-- Title Section-->
+        <header>
+            <h1>Projects</h1>
+            <nav>
+                <a href="index.html">About Me</a>
+                <a href="cv.html">CV</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        
+
+        <div class="project-wrapper">
+            <aside class="sidebar">
+                <div class="sidebar-cat">Assistive Robotics</div>
+                <a href="exoskeleton.html">Ankle Exoskeleton</a>
+                <a href="#">Knee Sleeve Sensors</a>
+                
+                <div class="sidebar-cat">Automotive</div>
+                <a href="#">Baja CVT Design</a>
+                <a href="#">Drivetrain Optimization</a>
+            </aside>
             
-            <div class="sidebar-cat">Automotive</div>
-            <a href="#">Baja CVT Design</a>
-            <a href="#">Drivetrain Optimization</a>
-        </aside>
 
-        <article>
-            <div class="toc-dropdown">
-                <strong>Contents</strong>
-                <ul>
-                    <li><a href="#abstract">1. Abstract</a></li>
-                    <li><a href="#design">2. Mechanical Design</a></li>
-                    <li><a href="#results">3. Simulation Results</a></li>
-                </ul>
-            </div>
+            
+            <article>
 
-            <section id="abstract">
-                <h2>1. Abstract</h2>
-                <p>This report details the development of a semi-active ankle exoskeleton designed to reduce the metabolic cost of transport during uphill walking...</p>
-            </section>
+                <!-- Table of Contents-->
+                <div class="toc-dropdown">
+                    <strong>Contents</strong>
+                    <ul>
+                        <li><a href="#abstract">1. Abstract</a></li>
+                        <li><a href="#design">2. Mechanical Design</a></li>
+                        <li><a href="#results">3. Simulation Results</a></li>
+                    </ul>
+                </div>
 
-            <section id="design">
-                <h2>2. Mechanical Design</h2>
-                <p>The chassis was optimized using FEA to ensure a safety factor of 2.0 under peak gait loads.</p>
-                <figure>
-                    <img src="cad-render.png" alt="CAD Render of Exoskeleton">
-                    <figcaption>Figure 1: Exploded view of the planetary gear assembly and motor housing.</figcaption>
-                </figure>
-            </section>
-        </article>
-    </div>
-</body>
+
+                <section id="abstract">
+                    <h2>1. Abstract</h2>
+                    <p>This report details the development of a semi-active ankle exoskeleton designed 
+                        to reduce the metabolic cost of transport during uphill walking...</p>
+                        \[ a + b \]
+                </section>
+
+                <section id="design">
+                    <h2>2. Mechanical Design</h2>
+                    <p>The chassis was optimized using FEA to ensure a safety factor of 2.0 under peak gait loads.</p>
+                    <figure>
+                        <img src="cad-render.png" alt="CAD Render of Exoskeleton">
+                        <figcaption>Figure 1: Exploded view of the planetary gear assembly and motor housing.</figcaption>
+                    </figure>
+                </section>
+            </article>
+
+
+            
+
+        </div>
+    </body>
 </html>
