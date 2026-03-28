@@ -42,6 +42,11 @@ nav a:hover { text-decoration: underline; }
     margin: 5px 0; 
 }
 .sidebar a:hover { color: #000; text-decoration: underline; }
+.status {
+    font-size: 0.85em;
+    color: #888;
+    font-style: italic;
+}
 
 /* Engineering Report Styling */
 article section { margin-bottom: 3em; }
