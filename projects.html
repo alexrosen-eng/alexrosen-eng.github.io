@@ -7,17 +7,14 @@
         <link rel="stylesheet" href="style.css">
         <title>Projects | Alexander Rosen</title>
         <script>
-            MathJax= {
+            window.MathJax = {
                 tex: {
-                    inlineMath: [['$', '$'], ['\\(', '\\)']]
-                },
-                svg: {
-                    fontCache: 'global'
+                    tags: 'ams'
                 }
             };
         </script>
-        <script type="text/javascript" id="MathJax-script" 
-        async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
     </head>
 
 
@@ -64,7 +61,16 @@
                     <h2>1. Abstract</h2>
                     <p>This report details the development of a semi-active ankle exoskeleton designed 
                         to reduce the metabolic cost of transport during uphill walking...</p>
-                        \[ a + b \]
+                    <p>
+                        Using the below equation \eqref{eq: pythag}, we see the pythag theorem.
+
+                        \[
+                        \begin{equation}
+                        \label{eq: pythag}
+                        a^2 + b^2 = c^2
+                        \]
+                    </p>
+                        
                 </section>
 
                 <section id="design">
