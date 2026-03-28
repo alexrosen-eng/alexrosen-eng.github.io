@@ -2,201 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mechanical Engineer CV</title>
-    
-    <style>
-        @import url('https://fonts.cdnfonts.com/css/latin-modern-roman');
-
-        :root {
-            --text-color: #000000;
-            --bg-color: #ffffff;
-        }
-
-        body {
-            font-family: 'Latin Modern Roman', 'Computer Modern Roman', 'Times New Roman', Times, serif;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 50px 20px;
-            text-align: justify;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 3em;
-        }
-
-        h1 {
-            font-weight: normal;
-            font-size: 2.5em;
-            margin-bottom: 0.1em;
-            letter-spacing: 0.05em;
-        }
-
-        .subtitle {
-            font-style: italic;
-            font-size: 1.2em;
-            margin-top: 0;
-            margin-bottom: 1.5em;
-        }
-
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            margin: 0 15px;
-            font-variant: small-caps;
-            font-size: 1.1em;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        h2 {
-            font-weight: normal;
-            font-variant: small-caps;
-            font-size: 1.5em;
-            border-bottom: 1px solid var(--text-color);
-            padding-bottom: 5px;
-            margin-top: 2em;
-            margin-bottom: 1em;
-        }
-
-        h3 {
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 0.2em;
-        }
-
-        /* CV Specific Styling */
-        .cv-entry {
-            margin-bottom: 1.5em;
-        }
-
-        .cv-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-
-        .cv-location-date {
-            font-style: italic;
-        }
-
-        .cv-role {
-            font-style: italic;
-            margin-bottom: 0.5em;
-        }
-
-        ul {
-            margin-top: 0.5em;
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 0.3em;
-        }
-
-        a {
-            color: var(--text-color);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 4em;
-            font-size: 0.9em;
-            font-style: italic;
-        }
-
-        /* Mobile responsiveness for CV dates */
-        @media (max-width: 600px) {
-            .cv-header {
-                flex-direction: column;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>About | Alexander Rosen</title>
 </head>
 <body>
-
     <header>
-        <h1>Firstname Lastname</h1>
-        <p class="subtitle">Mechanical Engineer</p>
+        <h1>Alexander Rosen</h1>
+        <p class="subtitle">Mechanical Engineer & Researcher</p>
         <nav>
-            <a href="#about">About Me</a>
-            <a href="#cv">CV</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+            <a href="index.html">About Me</a>
+            <a href="cv.html">CV</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <p>
-                Mechanical engineer with a strong foundation in thermodynamics, fluid mechanics, and structural analysis. Passionate about translating complex physical phenomena into robust, efficient, and manufacturable designs. Experienced in CAD modeling, finite element analysis (FEA), and rapid prototyping. Dedicated to precision, functionality, and continuous learning in both digital simulations and physical builds.
-            </p>
-        </section>
-
-        <section id="cv">
-            <h2>Curriculum Vitae</h2>
-            
-            <div class="cv-entry">
-                <div class="cv-header">
-                    <h3>Engineering Corp Inc.</h3>
-                    <span class="cv-location-date">City, State • 2023 – Present</span>
-                </div>
-                <div class="cv-role">Mechanical Design Engineer</div>
-                <ul>
-                    <li>Designed and optimized high-stress mechanical components using SolidWorks and ANSYS, reducing material costs by 15%.</li>
-                    <li>Developed thermal management systems for industrial enclosures.</li>
-                    <li>Created comprehensive technical documentation and GD&T drawings for manufacturing.</li>
-                </ul>
-            </div>
-
-            <div class="cv-entry">
-                <div class="cv-header">
-                    <h3>University of Technology</h3>
-                    <span class="cv-location-date">City, State • 2019 – 2023</span>
-                </div>
-                <div class="cv-role">B.S. in Mechanical Engineering</div>
-                <ul>
-                    <li>Summa Cum Laude (GPA: 3.9/4.0)</li>
-                    <li>Capstone: Designed an automated pneumatic sorting mechanism for recycled materials.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            
-            <div class="cv-entry">
-                <h3>Custom CNC Router Build</h3>
-                <p>Designed and assembled a 3-axis CNC machine from scratch. Utilized Fusion 360 for structural rigidity analysis. Programmed custom G-code macros for automated tool changes. Achieved a tolerance of ±0.05mm in aluminum milling.</p>
-            </div>
-
-            <div class="cv-entry">
-                <h3>CFD Analysis of Drone Propellers</h3>
-                <p>Conducted computational fluid dynamics (CFD) simulations to optimize the lift-to-drag ratio of custom UAV propellers. Manufactured prototypes using SLA 3D printing and verified thrust improvements in a wind tunnel.</p>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>
-                <strong>Email:</strong> <a href="mailto:engineer@example.com">engineer@example.com</a><br>
-                <strong>LinkedIn:</strong> <a href="#">linkedin.com/in/yourprofile</a><br>
-                <strong>GitHub:</strong> <a href="#">github.com/yourusername</a><br>
-                <strong>Location:</strong> Montreal, QC, Canada
-            </p>
-        </section>
+    <main class="about-container">
+        <img src="profile.jpg" alt="Alexander Rosen" class="profile-img">
+        <div class="description-box">
+            <h2>Background</h2>
+            <p>I am a Mechanical Engineering student at McGill University with a focus on assistive robotics and lower-limb exoskeletons. My work bridges the gap between dynamic simulation and physical prototyping...</p>
+            <p>Currently, I serve as the Technical Director for McGill Baja Racing, where I oversee the integration of vehicle subsystems and mentor a team of 40+ engineers.</p>
+        </div>
     </main>
-
-    <footer>
-        <p>&copy; 2026 Firstname Lastname. Typeset in HTML/CSS.</p>
-    </footer>
-
 </body>
 </html>
