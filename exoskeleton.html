@@ -78,11 +78,15 @@
         </div>
 
         <script>
-            fetch("project_sidebar.html")
-                .then(res => res.text())
+            fetch("/project_sidebar.html")
+                .then(res => {
+                    if (!res.ok) throw new Error("Sidebar failed to load");
+                    return res.text();
+                })
                 .then(data => {
                     document.getElementById("sidebar-container").innerHTML = data;
-                    });
+                })
+                .catch(err => console.error(err));
         </script>
     </body>
 </html>
