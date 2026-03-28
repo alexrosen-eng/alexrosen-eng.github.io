@@ -30,37 +30,12 @@
             </nav>
         </header>
         
-
         <div class="project-wrapper">
-            <aside class="sidebar">
-                <div class="sidebar-cat">Assistive Robotics</div>
-                <a href="exoskeleton.html">Ankle Exoskeleton</a>
-                <a href="#">Knee Sleeve Sensors</a>
-                
-                <div class="sidebar-cat">Automotive</div>
-                <a href="#">Baja CVT Design</a>
-                <a href="#">Drivetrain Optimization</a>
-            </aside>
-            
-
             
             <article>
-
-                <!-- Table of Contents-->
-                <div class="toc-dropdown">
-                    <strong>Contents</strong>
-                    <ul>
-                        <li><a href="#abstract">1. Abstract</a></li>
-                        <li><a href="#design">2. Mechanical Design</a></li>
-                        <li><a href="#results">3. Simulation Results</a></li>
-                    </ul>
-                </div>
-
-
-                <section id="abstract">
-                    <h2>1. Abstract</h2>
-                    <p>This report details the development of a semi-active ankle exoskeleton designed 
-                        to reduce the metabolic cost of transport during uphill walking...</p>
+                <section>
+                    <h2>Welcome</h2>
+                    <p>This is more of my projects blog</p>
                     <p>
                         Using the below equation \eqref{eq: pythag}, we see the pythag theorem.
 
@@ -70,23 +45,18 @@
                         a^2 + b^2 = c^2
                         \end{equation}
                         \]
-                    </p>
-                        
-                </section>
-
-                <section id="design">
-                    <h2>2. Mechanical Design</h2>
-                    <p>The chassis was optimized using FEA to ensure a safety factor of 2.0 under peak gait loads.</p>
-                    <figure>
-                        <img src="cad-render.png" alt="CAD Render of Exoskeleton">
-                        <figcaption>Figure 1: Exploded view of the planetary gear assembly and motor housing.</figcaption>
-                    </figure>
+                    </p> 
                 </section>
             </article>
-
-
-            
-
         </div>
+
+
+        <script>
+            fetch("sidebar.html")
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById("sidebar-container").innerHTML = data;
+                    });
+        </script>
     </body>
 </html>
