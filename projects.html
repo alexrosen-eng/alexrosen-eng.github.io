@@ -31,7 +31,9 @@
         </header>
         
         <div class="project-wrapper">
-            
+
+            <div id="sidebar-container"></div>
+
             <article>
                 <section>
                     <h2>Welcome</h2>
@@ -52,7 +54,7 @@
 
 
         <script>
-            fetch("sidebar.html")
+            fetch("project_sidebar.html")
                 .then(res => res.text())
                 .then(data => {
                     document.getElementById("sidebar-container").innerHTML = data;
