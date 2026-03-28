@@ -28,7 +28,7 @@ nav a:hover { text-decoration: underline; }
 
 /* Layouts */
 .about-container { display: flex; gap: 40px; align-items: start; margin-top: 2em; }
-.profile-img { width: 250px; height: auto; border: 1px solid var(--text-color); filter: grayscale(100%); }
+.profile-img { width: 250px; height: auto; border: 1px solid var(--text-color); }
 /*.description-box { border: 0px solid var(--text-color); padding: 20px; flex: 1; text-align: justify; }*/
 
 .project-wrapper { display: grid; grid-template-columns: 250px 1fr; gap: 40px; }
