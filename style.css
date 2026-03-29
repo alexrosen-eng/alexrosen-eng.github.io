@@ -16,17 +16,44 @@ body {
     padding: 50px 20px;
 }
 
+/* Code block container (like frame=single) */
 pre {
-    text-align: left;
+    background: #f5f5f5;              /* gray!10 */
+    border: 1px solid #ccc;           /* frame=single */
+    padding: 12px;
     margin: 20px 0;
-    padding: 15px;
     overflow-x: auto;
+    text-align: left;
+    font-size: 0.9em;                 /* \small */
+    line-height: 1.4;
 }
 
-code, pre {
-    font-family: "Courier New", monospace;
-    font-size: 0.9em;
+/* Font */
+code {
+    font-family: "Courier New", monospace;  /* \ttfamily */
 }
+
+/* Line numbers styling */
+.line-numbers .line-numbers-rows {
+    border-right: 1px solid #ccc;
+    padding-right: 8px;
+}
+
+/* Match LaTeX spacing */
+.line-numbers-rows > span:before {
+    color: gray;
+    font-size: 0.75em;
+}
+
+/* Wrap long lines */
+pre code {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.token.comment { color: #2e7d32; }   /* green-ish */
+.token.string { color: #c62828; }    /* red-ish */
+.token.keyword { color: #1565c0; }   /* blue-ish */
 
 /* Typography */
 h1, h2, h3, h4 { font-weight: normal; font-variant: small-caps; }
