@@ -18,22 +18,22 @@ body {
 
 /* Code block container (like frame=single) */
 pre {
-    background: #f5f5f5;              /* gray!10 */
-    border: 1px solid #ccc;           /* frame=single */
+    background: #f5f5f5;
+    border: 1px solid #ccc;
     padding: 12px;
     margin: 20px 0;
     overflow-x: auto;
     text-align: left;
-    font-size: 0.9em;                 /* \small */
     width: 100%;
-    max-width: 100%;
-    line-height: 1.4;
-    white-space: pre-wrap;
 }
 
 /* Font */
 code {
     font-family: "Courier New", monospace;  /* \ttfamily */
+}
+
+pre code {
+    white-space: pre;
 }
 
 /* Line numbers styling */
@@ -47,11 +47,6 @@ code {
     color: gray;
     font-size: 0.75em;
 }
-
-
-.token.comment { color: #2e7d32; }   /* green-ish */
-.token.string { color: #c62828; }    /* red-ish */
-.token.keyword { color: #1565c0; }   /* blue-ish */
 
 /* Typography */
 h1, h2, h3, h4 { font-weight: normal; font-variant: small-caps; }
