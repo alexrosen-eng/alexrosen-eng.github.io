@@ -17,7 +17,7 @@ body {
 }
 
 /* Code block container (like frame=single) */
-pre {
+pre[class*="language-"] {
     background: #f5f5f5;
     border: 1px solid #ccc;
     padding: 12px;
@@ -25,8 +25,8 @@ pre {
     overflow-x: auto;
     text-align: left;
     width: 100%;
+    line-height: 1.5;
 }
-
 
 
 /* Font */
@@ -36,6 +36,7 @@ code {
 
 pre code {
     white-space: pre;
+    line-height: 1.5;
 }
 
 pre, code {
@@ -57,6 +58,7 @@ pre.line-numbers {
 .line-numbers-rows > span:before {
     color: gray;
     font-size: 0.85em;
+    line-height: 1.5 !important;
 }
 
 /* Typography */
