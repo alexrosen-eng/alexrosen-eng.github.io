@@ -38,6 +38,10 @@ pre code {
     white-space: pre;
 }
 
+pre, code {
+    font-size: 0.85em;
+}
+
 /* Line numbers styling */
 .line-numbers .line-numbers-rows {
     border-right: 1px solid #ccc;
@@ -52,7 +56,7 @@ pre.line-numbers {
 /* Match LaTeX spacing */
 .line-numbers-rows > span:before {
     color: gray;
-    font-size: 0.75em;
+    font-size: 0.85em;
 }
 
 /* Typography */
