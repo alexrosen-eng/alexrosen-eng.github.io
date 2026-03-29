@@ -25,21 +25,36 @@ pre[class*="language-"] {
     overflow-x: auto;
     text-align: left;
     width: 100%;
+    
+    /* Apply typography scale HERE ONCE so it inherits evenly */
+    font-family: "Courier New", monospace;
+    font-size: 0.85em; 
+    line-height: 1.4;
 }
 
-/* Unified Typography for Code and Line Numbers */
-pre[class*="language-"], 
-code[class*="language-"],
+/* Prevent compounding font-size on the inner code */
+pre[class*="language-"] code,
 code {
-    font-family: "Courier New", monospace;  /* Applies to code AND line numbers */
-    font-size: 0.85em; /* Scales down Courier New to match Latin Modern Roman */
-    line-height: 1.4;  /* 1.4 is more readable than 1.0, and uniform across both */
+    font-family: "Courier New", monospace;
+    font-size: 1em; /* Stays at 100% of the parent's 0.85em */
+    line-height: inherit;
 }
 
-/* Ensure line numbers match the unified line height */
+/* Line numbers structural styling */
+pre.line-numbers {
+    padding-left: 3.5em; /* Creates space for the numbers */
+}
+
+.line-numbers .line-numbers-rows {
+    border-right: 1px solid #ccc; /* Restores the vertical dividing line */
+    padding-right: 8px;
+    left: 0;
+}
+
+/* Ensure line numbers perfectly match the inherited line height */
 .line-numbers-rows > span:before {
     color: gray;
-    line-height: 1.4 !important; 
+    line-height: inherit !important; 
 }
 
 /* Typography */
