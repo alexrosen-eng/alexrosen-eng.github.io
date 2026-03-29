@@ -150,6 +150,77 @@ pre[class*="language-"] {
     width: 100%;
 }
 
-
-
 footer { text-align: center; margin-top: 5em; font-size: 0.8em; font-style: italic; border-top: 1px solid var(--border-color); padding-top: 20px; }
+
+
+/* ===================== */
+/* CV PAGE STYLING */
+/* ===================== */
+
+.cv-page {
+    max-width: 800px;
+    text-align: justify;
+}
+
+/* Title */
+.cv-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.1em;
+}
+
+/* Subtitle */
+.cv-page .subtitle {
+    font-style: italic;
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+}
+
+/* Section headers */
+.cv-page h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid var(--text-color);
+    padding-bottom: 5px;
+    margin-top: 2em;
+}
+
+/* Job / education entries */
+.cv-page .cv-entry {
+    margin-bottom: 1.5em;
+}
+
+.cv-page .cv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.cv-page .cv-location-date {
+    font-style: italic;
+}
+
+.cv-page .cv-role {
+    font-style: italic;
+    margin-bottom: 0.5em;
+}
+
+/* Lists */
+.cv-page ul {
+    margin-top: 0.5em;
+    padding-left: 20px;
+}
+
+.cv-page li {
+    margin-bottom: 0.3em;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .cv-page .cv-header {
+        flex-direction: column;
+    }
+}
+
+.cv-page h2::before,
+.cv-page h3::before {
+    content: none;
+}
