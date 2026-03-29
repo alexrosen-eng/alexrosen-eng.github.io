@@ -16,7 +16,7 @@ body {
     padding: 50px 20px;
 }
 
-/* Code block container (like frame=single) */
+/* Code block container */
 pre[class*="language-"] {
     background: #f5f5f5;
     border: 1px solid #ccc;
@@ -25,40 +25,21 @@ pre[class*="language-"] {
     overflow-x: auto;
     text-align: left;
     width: 100%;
-    line-height: 1.0;
 }
 
-
-/* Font */
+/* Unified Typography for Code and Line Numbers */
+pre[class*="language-"], 
+code[class*="language-"],
 code {
-    font-family: "Courier New", monospace;  /* \ttfamily */
+    font-family: "Courier New", monospace;  /* Applies to code AND line numbers */
+    font-size: 0.85em; /* Scales down Courier New to match Latin Modern Roman */
+    line-height: 1.4;  /* 1.4 is more readable than 1.0, and uniform across both */
 }
 
-pre code {
-    white-space: pre;
-    line-height: 1.0;
-}
-
-pre, code {
-    line-height: 1.0;
-}
-
-/* Line numbers styling */
-.line-numbers .line-numbers-rows {
-    border-right: 1px solid #ccc;
-    padding-right: 8px;
-    left: 0;
-}
-
-pre.line-numbers {
-    padding-left: 3.5em;
-}
-
-/* Match LaTeX spacing */
+/* Ensure line numbers match the unified line height */
 .line-numbers-rows > span:before {
     color: gray;
-    font-size: 0.85em;
-    line-height: 1.0 !important;
+    line-height: 1.4 !important; 
 }
 
 /* Typography */
