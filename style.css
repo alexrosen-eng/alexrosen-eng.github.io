@@ -96,4 +96,32 @@ figure img { max-width: 100%; border: 1px solid var(--border-color); }
 figcaption { font-style: italic; font-size: 0.9em; margin-top: 10px; }
 .toc-dropdown { font-size: 0.85em; margin-bottom: 20px; background: #f9f9f9; padding: 10px; border: 1px solid var(--border-color); }
 
+/* 1. Constrain the article width to match the visual balance */
+article {
+    min-width: 0; /* Prevents code blocks from pushing the grid wider than the screen */
+    max-width: 710px; /* 1000px (body) - 250px (sidebar) - 40px (gap) = ~710px */
+}
+
+/* 2. Fix the Table of Contents and Code Blocks */
+.toc-dropdown, 
+pre[class*="language-"] {
+    max-width: 100%; /* Ensures they never exceed the article width */
+    box-sizing: border-box; /* Includes padding in the width calculation */
+}
+
+/* 3. Force MathJax to stay within the article bounds */
+.MathJax {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* 4. Ensure the Grid itself doesn't exceed the 1000px body */
+.project-wrapper {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 40px;
+    width: 100%;
+}
+
 footer { text-align: center; margin-top: 5em; font-size: 0.8em; font-style: italic; border-top: 1px solid var(--border-color); padding-top: 20px; }
