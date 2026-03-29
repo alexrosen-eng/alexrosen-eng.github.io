@@ -25,7 +25,7 @@ pre[class*="language-"] {
     overflow-x: auto;
     text-align: left;
     width: 100%;
-    line-height: 1.5;
+    line-height: 1.0;
 }
 
 
@@ -36,11 +36,11 @@ code {
 
 pre code {
     white-space: pre;
-    line-height: 1.5;
+    line-height: 1.0;
 }
 
 pre, code {
-    font-size: 0.85em;
+    line-height: 1.0;
 }
 
 /* Line numbers styling */
@@ -58,7 +58,7 @@ pre.line-numbers {
 .line-numbers-rows > span:before {
     color: gray;
     font-size: 0.85em;
-    line-height: 1.5 !important;
+    line-height: 1.0 !important;
 }
 
 /* Typography */
