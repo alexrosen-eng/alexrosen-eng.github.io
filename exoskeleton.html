@@ -21,6 +21,7 @@
         <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.css" rel="stylesheet"/>
 
         <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.js"></script>
     </head>
 
@@ -73,8 +74,7 @@
                         we also wrote some code. as follow 
                     </p>
 
-                    <pre class="line-numbers"><code class="language-python">
-                    import numpy
+                    <pre class="line-numbers"><code class="language-python">import numpy
                     from scipy.optimize import minimize
                     from scipy.optimize._numdiff import approx_derivative
                     import jax
@@ -115,6 +115,75 @@
 
                     def constraint_grad_jaxnp(x):
                         return numpy.array(constraint_grad_jax(x), dtype=float)
+
+
+                    #%% Callback functions to store the positions and the Lagrangian gradients at each iteration
+
+                    # History variables
+                    FD_hist = []
+                    analytical_hist = []
+                    AD_hist = []
+
+
+                    # Finite difference callback function
+                    def callback_FD(xk):
+                        gk = approx_derivative(objective, xk)
+                        # eps = 1e-6
+                        #gk = ((objective(xk+eps) - objective(xk)) / eps)
+                        # c = constraint(xk) # Evaluate constraint
+                        # c_gk = ((constraint(xk+eps) - c) / eps) # FD of constraint gradient
+
+                        FD_hist.append((xk.copy(), gk.copy()))
+                        return
+
+                    def callback_analytical(xk):
+                        gk = objective_grad(xk)
+                        c = constraint(xk)
+                        c_gk = constraint_grad(xk)
+                        
+                        analytical_hist.append((xk.copy(), gk.copy()))
+                        return
+
+                    def callback_AD(xk):
+                        gk = objective_grad_jaxnp(xk)
+                        c = constraint(xk)
+                        c_gk = constraint_grad_jax(xk)
+
+                        AD_hist.append((xk.copy(), gk.copy()))
+                        return
+
+
+                    #%% Solve the optimization problem
+
+                    # Initial guess
+                    x0 = numpy.array([-1, 1.4])
+
+                    # Include the initial guess and gradient
+                    FD_hist.append((x0.copy(), numpy.linalg.norm((objective(x0+1e-6) - objective(x0)) / 1e-6)))
+                    analytical_hist.append((x0.copy(), objective_grad(x0).copy()))
+                    AD_hist.append((x0.copy(), numpy.array(objective_grad_jaxnp(x0), dtype=float)))
+
+                    # Assemble Constraint
+                    cons = {'type': 'ineq', 'fun': constraint}
+                    cons_withgrad = {'type': 'ineq', 'fun': constraint, 'jac': constraint_grad}
+                    cons_withgrad_jax = {'type': 'ineq', 'fun': constraint, 'jac': constraint_grad_jaxnp}
+
+                    opt = {'disp': True}
+
+                    # Minimize using SLSQP
+                    minimize_function1 = minimize(objective, x0, method='SLSQP', constraints=[cons], callback=callback_FD, options = opt)
+                    minimize_function2 = minimize(objective, x0, method='SLSQP', jac=objective_grad, constraints=[cons_withgrad], callback=callback_analytical, options = opt)
+                    minimize_function3 = minimize(objective, x0, method='SLSQP', jac=objective_grad_jaxnp, constraints=[cons_withgrad_jax], callback=callback_AD, options=opt)
+
+                    # Output
+                    print("Optimal solution (x, y):                              ", minimize_function1.x)
+                    print("Optimal solution with Analytical Gradient(x, y):      ", minimize_function2.x)
+                    print("Optimal solution with Automatic Differentiation(x, y):", minimize_function3.x)
+
+                    true_value = minimize_function2.x
+
+                    print("Percent Error for Finite Difference", numpy.linalg.norm(minimize_function1.x - true_value) ) 
+                    print("Percent Error for Automatic Differentiation", numpy.linalg.norm(minimize_function3.x - true_value) ) 
                     </code></pre>
                         
                 </section>

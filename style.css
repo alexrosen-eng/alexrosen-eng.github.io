@@ -25,7 +25,10 @@ pre {
     overflow-x: auto;
     text-align: left;
     font-size: 0.9em;                 /* \small */
+    width: 100%;
+    max-width: 100%;
     line-height: 1.4;
+    white-space: pre-wrap;
 }
 
 /* Font */
@@ -45,11 +48,6 @@ code {
     font-size: 0.75em;
 }
 
-/* Wrap long lines */
-pre code {
-    white-space: pre-wrap;
-    word-break: break-word;
-}
 
 .token.comment { color: #2e7d32; }   /* green-ish */
 .token.string { color: #c62828; }    /* red-ish */
