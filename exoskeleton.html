@@ -131,6 +131,8 @@
 
         </div>
 
+
+        <!--Script to Fetch the Sidebar-->>
         <script>
             fetch("/project_sidebar.html")
                 .then(res => {
@@ -143,22 +145,26 @@
                 .catch(err => console.error(err));
         </script>
 
-        document.addEventListener("DOMContentLoaded", () => {
-            // 1. Auto-fill Figure References
-            const figures = Array.from(document.querySelectorAll('figure'));
-            document.querySelectorAll('.fig-ref').forEach(ref => {
-                const targetId = ref.getAttribute('href').substring(1);
-                const figIndex = figures.findIndex(f => f.id === targetId) + 1;
-                ref.textContent = figIndex > 0 ? `Figure ${figIndex}` : "[Fig Error]";
-            });
+        <!--Script to do auto referencing of citations-->>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // 1. Auto-fill Figure References
+                const figures = Array.from(document.querySelectorAll('figure'));
+                document.querySelectorAll('.fig-ref').forEach(ref => {
+                    const targetId = ref.getAttribute('href').substring(1);
+                    const figIndex = figures.findIndex(f => f.id === targetId) + 1;
+                    ref.textContent = figIndex > 0 ? `Figure ${figIndex}` : "[Fig Error]";
+                });
 
-            // 2. Auto-fill Citations [1], [2], etc.
-            const bibItems = Array.from(document.querySelectorAll('.bib-list li'));
-            document.querySelectorAll('.cite-ref').forEach(ref => {
-                const targetId = ref.getAttribute('href').substring(1);
-                const citeIndex = bibItems.findIndex(li => li.id === targetId) + 1;
-                ref.textContent = citeIndex > 0 ? `[${citeIndex}]` : "[Cite Error]";
+                // 2. Auto-fill Citations [1], [2], etc.
+                const bibItems = Array.from(document.querySelectorAll('.bib-list li'));
+                document.querySelectorAll('.cite-ref').forEach(ref => {
+                    const targetId = ref.getAttribute('href').substring(1);
+                    const citeIndex = bibItems.findIndex(li => li.id === targetId) + 1;
+                    ref.textContent = citeIndex > 0 ? `[${citeIndex}]` : "[Cite Error]";
+                });
             });
-        });
+        </script>
+
     </body>
 </html>
