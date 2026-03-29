@@ -27,6 +27,8 @@ pre {
     width: 100%;
 }
 
+
+
 /* Font */
 code {
     font-family: "Courier New", monospace;  /* \ttfamily */
@@ -40,6 +42,11 @@ pre code {
 .line-numbers .line-numbers-rows {
     border-right: 1px solid #ccc;
     padding-right: 8px;
+    left: 0;
+}
+
+pre.line-numbers {
+    padding-left: 3.5em;
 }
 
 /* Match LaTeX spacing */
