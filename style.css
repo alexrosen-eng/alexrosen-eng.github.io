@@ -14,6 +14,20 @@ body {
     max-width: 1000px; /* Slightly wider for the sidebar layout */
     margin: 0 auto;
     padding: 50px 20px;
+    counter-reset: fig-count;
+    counter-reset: section;
+}
+
+h2 { counter-reset: subsection; counter-increment: section; }
+h3 { counter-reset: subsubsection; counter-increment: subsection; }
+
+h2::before { content: counter(section) ". "; }
+h3::before { content: counter(section) "." counter(subsection) " "; }
+
+/* Indent nested items in the TOC */
+.toc-dropdown ul ul {
+    padding-left: 20px;
+    list-style-type: none;
 }
 
 /* Code block container */
@@ -91,9 +105,21 @@ nav a:hover { text-decoration: underline; }
 
 /* Engineering Report Styling */
 article section { margin-bottom: 3em; }
-figure { margin: 2em 0; text-align: center; }
+
+figure { 
+    margin: 2em 0; 
+    text-align: center; 
+    counter-increment: fig-count;
+}
+
 figure img { max-width: 100%; border: 1px solid var(--border-color); }
-figcaption { font-style: italic; font-size: 0.9em; margin-top: 10px; }
+figcaption { 
+    font-style: italic; 
+    font-size: 0.9em; 
+    margin-top: 10px; 
+    content: "Figure " counter(fig-count) ": ";
+    font-weight: bold;
+}
 .toc-dropdown { font-size: 0.85em; margin-bottom: 20px; background: #f9f9f9; padding: 10px; border: 1px solid var(--border-color); }
 
 /* 1. Constrain the article width to match the visual balance */

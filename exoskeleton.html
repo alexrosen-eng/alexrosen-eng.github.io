@@ -48,19 +48,24 @@
                 <div class="toc-dropdown">
                     <strong>Contents</strong>
                     <ul>
-                        <li><a href="#abstract">1. Abstract</a></li>
-                        <li><a href="#design">2. Mechanical Design</a></li>
-                        <li><a href="#results">3. Simulation Results</a></li>
+                        <li><a href="#section 1">Section 1</a></li>
+                        <li>
+                            <a href="#design">Mechanical Design</a>
+                            <ul>
+                                <li><a href="#fea">FEA Analysis</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
 
 
-                <section id="abstract">
-                    <h2>1. Abstract</h2>
-                    <p>This report details the development of a semi-active ankle exoskeleton designed 
-                        to reduce the metabolic cost of transport during uphill walking...</p>
+                <section id="section 1">
+                    <h2>Section 1</h2>
+                    <p>This is the first section of the report</p>
                     <p>
-                        Using the below equation \eqref{eq: pythag}, we see the pythag theorem.
+                        This document has been coded with the ability to
+                        include LaTeX equation such as Equation \eqref{eq: pythag}, 
+                        as shown below. 
 
                         \[
                         \begin{equation}
@@ -71,18 +76,11 @@
                     </p>
 
                     <p>
-                        we also wrote some code. as follow 
+                        We also have the ability to paste a code block as is shown below
                     </p>
 
                     <pre class="line-numbers" data-normalize-whitespace="true"><code class="language-python">
                     import numpy
-                    from scipy.optimize import minimize
-                    from scipy.optimize._numdiff import approx_derivative
-                    import jax
-                    import jax.numpy
-                    import matplotlib.pyplot as plt
-                    from matplotlib.colors import LogNorm
-
 
                     #%% Function definitions of the objective, constraints, and gradients
 
@@ -96,107 +94,38 @@
                         x, y = x[0], x[1]
                         return numpy.array([-2*(1-x)+200*(y-x**2)*(-2*x), 200*(y-x**2)])
 
-                    # Constraint: 1 - x^2 - y^2 >= 0
-                    def constraint(x):
-                        x, y = x[0], x[1]
-                        return 1 - x**2 - y**2
-
-                    # Gradient of the constraint
-                    def constraint_grad(x):
-                        x, y = x[0], x[1]
-                        return numpy.array([-2*x, -2*y])
-
-                    # Compute gradients using JAX
-                    objective_grad_jax = jax.grad(objective)
-                    constraint_grad_jax = jax.grad(constraint)
-
-                    # Convert JAX arrays to numPy for scipy
-                    def objective_grad_jaxnp(x):
-                        return numpy.array(objective_grad_jax(x), dtype=float)
-
-                    def constraint_grad_jaxnp(x):
-                        return numpy.array(constraint_grad_jax(x), dtype=float)
-
-
-                    #%% Callback functions to store the positions and the Lagrangian gradients at each iteration
-
-                    # History variables
-                    FD_hist = []
-                    analytical_hist = []
-                    AD_hist = []
-
-
-                    # Finite difference callback function
-                    def callback_FD(xk):
-                        gk = approx_derivative(objective, xk)
-                        # eps = 1e-6
-                        #gk = ((objective(xk+eps) - objective(xk)) / eps)
-                        # c = constraint(xk) # Evaluate constraint
-                        # c_gk = ((constraint(xk+eps) - c) / eps) # FD of constraint gradient
-
-                        FD_hist.append((xk.copy(), gk.copy()))
-                        return
-
-                    def callback_analytical(xk):
-                        gk = objective_grad(xk)
-                        c = constraint(xk)
-                        c_gk = constraint_grad(xk)
-                        
-                        analytical_hist.append((xk.copy(), gk.copy()))
-                        return
-
-                    def callback_AD(xk):
-                        gk = objective_grad_jaxnp(xk)
-                        c = constraint(xk)
-                        c_gk = constraint_grad_jax(xk)
-
-                        AD_hist.append((xk.copy(), gk.copy()))
-                        return
-
-
-                    #%% Solve the optimization problem
-
-                    # Initial guess
-                    x0 = numpy.array([-1, 1.4])
-
-                    # Include the initial guess and gradient
-                    FD_hist.append((x0.copy(), numpy.linalg.norm((objective(x0+1e-6) - objective(x0)) / 1e-6)))
-                    analytical_hist.append((x0.copy(), objective_grad(x0).copy()))
-                    AD_hist.append((x0.copy(), numpy.array(objective_grad_jaxnp(x0), dtype=float)))
-
-                    # Assemble Constraint
-                    cons = {'type': 'ineq', 'fun': constraint}
-                    cons_withgrad = {'type': 'ineq', 'fun': constraint, 'jac': constraint_grad}
-                    cons_withgrad_jax = {'type': 'ineq', 'fun': constraint, 'jac': constraint_grad_jaxnp}
-
-                    opt = {'disp': True}
-
-                    # Minimize using SLSQP
-                    minimize_function1 = minimize(objective, x0, method='SLSQP', constraints=[cons], callback=callback_FD, options = opt)
-                    minimize_function2 = minimize(objective, x0, method='SLSQP', jac=objective_grad, constraints=[cons_withgrad], callback=callback_analytical, options = opt)
-                    minimize_function3 = minimize(objective, x0, method='SLSQP', jac=objective_grad_jaxnp, constraints=[cons_withgrad_jax], callback=callback_AD, options=opt)
-
-                    # Output
-                    print("Optimal solution (x, y):                              ", minimize_function1.x)
-                    print("Optimal solution with Analytical Gradient(x, y):      ", minimize_function2.x)
-                    print("Optimal solution with Automatic Differentiation(x, y):", minimize_function3.x)
-
-                    true_value = minimize_function2.x
-
-                    print("Percent Error for Finite Difference", numpy.linalg.norm(minimize_function1.x - true_value) ) 
-                    print("Percent Error for Automatic Differentiation", numpy.linalg.norm(minimize_function3.x - true_value) ) 
                     </code></pre>
                         
                 </section>
 
-                <section id="design">
-                    <h2>2. Mechanical Design</h2>
-                    <p>The chassis was optimized using FEA to ensure a safety factor of 2.0 under peak gait loads.</p>
-                    <figure>
-                        <img src="cad-render.png" alt="CAD Render of Exoskeleton">
-                        <figcaption>Figure 1: Exploded view of the planetary gear assembly and motor housing.</figcaption>
+                <section id="section 2">
+                    <h2>Section 2</h2>
+                    <h3 id="subsection 2.1">subsection 2.1</h3>
+                    <p>Finally, we also have the ability to reference figures
+                        such as Figure <a href="#figure 1" class="fig-ref"></a>
+                    </p>
+
+                    <figure id="figure 1">
+                        <img src="/figure_1.png" alt="Figure 1">
+                        <figcaption>CAPTION</figcaption>
                     </figure>
+
+                    <p>
+                        Finally, Finally, this html document has been coded
+                        with the ability to autmatically refernce the Citations
+                        <a href="#cite-smith2024" class="cite-ref"></a>.
+                    </p>
+
                 </section>
+
+                <section id="refs">
+                    <h2>References</h2>
+                    <ol class="bib-list">
+                        <li id="cite-smith2024">Smith, J. "Exoskeleton Design," Journal of Robotics, 2024.</li>
+                        <li id="cite-doe2023">Doe, A. "Metabolic Costs," Nature, 2023.</li>
+                    </ol>
+                </section>
+
             </article>
             
 
@@ -213,5 +142,23 @@
                 })
                 .catch(err => console.error(err));
         </script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Auto-fill Figure References
+            const figures = Array.from(document.querySelectorAll('figure'));
+            document.querySelectorAll('.fig-ref').forEach(ref => {
+                const targetId = ref.getAttribute('href').substring(1);
+                const figIndex = figures.findIndex(f => f.id === targetId) + 1;
+                ref.textContent = figIndex > 0 ? `Figure ${figIndex}` : "[Fig Error]";
+            });
+
+            // 2. Auto-fill Citations [1], [2], etc.
+            const bibItems = Array.from(document.querySelectorAll('.bib-list li'));
+            document.querySelectorAll('.cite-ref').forEach(ref => {
+                const targetId = ref.getAttribute('href').substring(1);
+                const citeIndex = bibItems.findIndex(li => li.id === targetId) + 1;
+                ref.textContent = citeIndex > 0 ? `[${citeIndex}]` : "[Cite Error]";
+            });
+        });
     </body>
 </html>
